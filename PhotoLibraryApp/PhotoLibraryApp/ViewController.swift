@@ -14,7 +14,9 @@ enum PhotoAppImageSource {
 
 class ViewController: UIViewController, UINavigationControllerDelegate  {
 
-    
+    @IBOutlet weak var selectedImageView: UIImageView!
+    private var imagePicker: UIImagePickerController?
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -61,11 +63,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate  {
         }
     }
 
-    @IBOutlet weak var capturedImageView: UIImageView!
-    private var imagePicker: UIImagePickerController?
-
     @IBAction func saveImage(_ sender: AnyObject) {
-        guard let selectedImage = capturedImageView.image else {
+        guard let selectedImage = selectedImageView.image else {
             print("Image not found!")
             return
         }
@@ -103,6 +102,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate  {
             print("Could not find the image!")
             return
         }
-        capturedImageView.image = selectedImage
+        selectedImageView.image = selectedImage
     }
 }
